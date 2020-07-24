@@ -110,11 +110,13 @@ p1 <- ggplot(ndvi, aes(x=date, y=ndvi, col=region))+
         geom_line(cex=1.2)+
         labs(x="", y="NDVI")+
         ylim(-1, 1)+
+        geom_smooth(col="black")+
         geom_hline(aes(yintercept=0), col = "black")+
         facet_wrap(~region)+
         scale_color_brewer(palette = 2, aesthetics="black")+
         theme_linedraw()+
-        theme(legend.title = element_blank())
+        theme(legend.title = element_blank(), 
+              panel.grid = element_blank())
 p1
 
 
@@ -124,12 +126,15 @@ p2 <- ndvi %>%
         mutate(average = mean(ndvi), anomaly = ndvi-average) %>% 
         ggplot(aes(x=date, y=anomaly)) +
         geom_col(aes(fill= anomaly>0))+
+        geom_hline(yintercept = 0)+
+        ylim(-1,.9)+
         scale_fill_manual(labels = c("FALSE" = "Lower than avg", "TRUE"="Higher than avg"), 
                           values = c("blue", "red"))+
         labs(x ="", y = "NDVI anomaly")+
         facet_wrap(~region)+
         theme_linedraw()+
-        theme(legend.title = element_blank())
+        theme(legend.title = element_blank(), 
+              panel.grid = element_blank())
 p2
 
 cowplot::plot_grid(p1,p2, labels="AUTO", ncol=1)
@@ -650,7 +655,7 @@ p1
 p2 <- temp %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
         group_by(region, month) %>% 
-        mutate(average = mean(temp), anomaly = temp-average) %>% 
+        mutate(average = mean(temp, na.rm = TRUE), anomaly = temp-average) %>% 
         ggplot(aes(x=date, y=anomaly)) +
         geom_col(aes(fill= anomaly>0))+
         scale_fill_manual(labels = c("FALSE" = "Colder than avg", "TRUE"="Warmer than avg"), 
@@ -663,12 +668,5 @@ p2
 
 cowplot::plot_grid(p1,p2, labels="AUTO", ncol=1)
 ggsave("figs/temp_variation.png", dpi = 300, width = 10, height = 10)
-
-
-
-
-cd /path/to/my/codebase
-
-
 
 
