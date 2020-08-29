@@ -4,6 +4,9 @@ library(ggthemes)
 library(zoo)
 
 
+
+
+
 # NDVI -------------------------
 
 #nl= NDVI desde Landsat
@@ -504,4 +507,35 @@ temp <- temp %>%
         rename(
                 temp=LST_Day_1km
         )
+
+
+# Monthly average----
+#NDVI
+ndvi_ts <- ndvi %>% 
+        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+        group_by(year, month) %>% 
+        summarize(ndvi=mean(ndvi))
+#NDWI
+ndwi_ts <- ndwi %>% 
+        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+        group_by(year, month) %>% 
+        summarize(ndwi=mean(ndwi))
+
+#LSWI
+lswi_ts <- lswi %>% 
+        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+        group_by(year, month) %>% 
+        summarize(lswi=mean(lswi))
+
+#RAIN
+rain_ts <- rain %>% 
+        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+        group_by(year, month) %>% 
+        summarize(rain=mean(rain))
+
+#TEMPERATURE
+temp_ts <- temp %>% 
+        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>%  
+        group_by(year, month) %>% 
+        summarize(temp=mean(temp, na.rm = TRUE))
 
