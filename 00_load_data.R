@@ -539,3 +539,15 @@ temp_ts <- temp %>%
         group_by(year, month) %>% 
         summarize(temp=mean(temp, na.rm = TRUE))
 
+
+#MERGED VARIABLES -----
+mangrove_variables <-  merge(ndvi, ndwi, by=c("region","system.time_start", "date")) %>% 
+        merge(lswi, by=c("region","system.time_start", "date")) %>% 
+        merge(rain, by=c("region","system.time_start", "date")) %>% 
+        merge(temp, na.rm=TRUE, by=c("region","system.time_start", "date"))
+
+
+
+
+
+
