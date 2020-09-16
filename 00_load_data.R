@@ -549,5 +549,66 @@ mangrove_variables <-  merge(ndvi, ndwi, by=c("region","system.time_start", "dat
 
 
 
+mangrove_variables <- mutate(mangrove_variables, year = year(date))
+
+tt <- mangrove_variables %>% 
+        group_by(region) %>% 
+        summarise(ndvi=mean(ndvi, na.rm = T), 
+                  ndwi_mean=mean(ndwi, na.rm = T), 
+                  ndwi_min=min(ndwi, na.rm = T),
+                  ndwi_max=max(ndwi, na.rm = T),
+                  lswi=mean(lswi, na.rm = T), 
+                  rain=mean(rain, na.rm = T), 
+                  temp=mean(temp, na.rm = T))
 
 
+
+
+        
+env <- tt %>% 
+        ungroup() %>% 
+        select(ndvi:rain)
+
+
+
+env_st <- vegan::decostand(env, method = "standardize")
+
+pca_fit <- env %>% 
+        prcomp(scale=T) # do PCA on scaled data
+
+library(broom)  # devtools::install_github("tidymodels/broom")
+library(cowplot)
+
+
+p <- pca_fit %>%
+        augment(tt) %>% # add original dataset back in
+        ggplot(aes(.fittedPC1, .fittedPC2, color = region)) + 
+        geom_point() +
+        theme_half_open(12) + background_grid()
+
+plotly::ggplotly(p)
+
+
+
+arrow_style <- arrow(
+        angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
+)
+
+# plot rotation matrix
+pca_fit %>%
+        tidy(matrix = "rotation") %>%
+        pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") %>%
+        ggplot(aes(PC1, PC2)) +
+        geom_segment(xend = 0, yend = 0, arrow = arrow_style) +
+        geom_text(
+                aes(label = column),
+                hjust = 1, nudge_x = -0.02, 
+                color = "#904C2F"
+        ) +
+        xlim(-1.25, .5) + ylim(-.5, 1) +
+        coord_fixed() + # fix aspect ratio to 1:1
+        theme_minimal_grid(12)
+
+
+
+biplot(pca_fit)
