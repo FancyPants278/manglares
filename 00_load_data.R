@@ -513,43 +513,53 @@ temp <- temp %>%
 #NDVI
 ndvi_ts <- ndvi %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        group_by(year, month) %>% 
+        group_by(year, month, region) %>% 
         summarize(ndvi=mean(ndvi))
 #NDWI
 ndwi_ts <- ndwi %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        group_by(year, month) %>% 
+        group_by(year, month, region) %>% 
         summarize(ndwi=mean(ndwi))
 
 #LSWI
 lswi_ts <- lswi %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        group_by(year, month) %>% 
+        group_by(year, month, region) %>% 
         summarize(lswi=mean(lswi))
 
 #RAIN
 rain_ts <- rain %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        group_by(year, month) %>% 
+        group_by(year, month, region)%>% 
         summarize(rain=mean(rain))
 
 #TEMPERATURE
 temp_ts <- temp %>% 
         mutate(month = format(date, "%m"), year = format(date, "%Y")) %>%  
-        group_by(year, month) %>% 
+        group_by(year, month, region) %>% 
         summarize(temp=mean(temp, na.rm = TRUE))
+
+## COORDINATES ----
+coord <- read.csv("data/coordenadas.csv")
 
 
 #MERGED VARIABLES -----
+#RAW VALUES
 mangrove_variables <-  merge(ndvi, ndwi, by=c("region","system.time_start", "date")) %>% 
         merge(lswi, by=c("region","system.time_start", "date")) %>% 
         merge(rain, by=c("region","system.time_start", "date")) %>% 
-        merge(temp, na.rm=TRUE, by=c("region","system.time_start", "date"))
-
-
+        merge(temp, na.rm=TRUE, by=c("region","system.time_start", "date"))%>%
+        merge(coord, by=("region"))
 
 
 mangrove_variables <- mutate(mangrove_variables, year = year(date))
+
+#MONTHLY AVERAGE VALUES
+mangrove_avg <-  merge(ndvi_ts, ndwi_ts, by=c("region", "year", "month" )) %>% 
+        merge(lswi_ts, by=c("region", "year", "month")) %>% 
+        merge(rain_ts, by=c("region", "year", "month")) %>% 
+        merge(temp_ts, na.rm=TRUE, by=c("region", "year", "month")) %>% 
+        merge(coord, by=("region"))
 
 tt <- mangrove_variables %>% 
         group_by(region) %>% 
