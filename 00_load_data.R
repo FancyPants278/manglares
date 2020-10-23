@@ -41,9 +41,9 @@ nl_chametla$date <- parse_date_time(nl_chametla$system.time_start, orders = c("m
 nl_chametla$region <- rep("Chametla", nrow(nl_chametla))
 
 
-nl_comitan <- read.csv("data/ndvi/landsat/comitan_nl.csv")
-nl_comitan$date <- parse_date_time(nl_comitan$system.time_start, orders = c("mdy"))
-nl_comitan$region <- rep("Comitan", nrow(nl_comitan))
+#nl_comitan <- read.csv("data/ndvi/landsat/comitan_nl.csv")
+#nl_comitan$date <- parse_date_time(nl_comitan$system.time_start, orders = c("mdy"))
+#nl_comitan$region <- rep("Comitan", nrow(nl_comitan))
 
 
 nl_conchalito <- read.csv("data/ndvi/landsat/conchalito_nl.csv")
@@ -100,8 +100,8 @@ nl_zacatecas <- read.csv("data/ndvi/landsat/zacatecas_nl.csv")
 nl_zacatecas$date <- parse_date_time(nl_zacatecas$system.time_start, orders = c("mdy"))
 nl_zacatecas$region <- rep("Zacatecas", nrow(nl_zacatecas))
 
-ndvi <- rbind(nl_aero,nl_ardilla,nl_balandra,nl_cajoncito,nl_centenario,nl_chametla, nl_comitan, nl_conchalito, nl_enfermeria, nl_erendira, nl_ES, nl_merito, nl_mogote, nl_palmira, nl_pichilingue, nl_tesoro, nl_zacatal, nl_zacatecas)
-ndvi$region <- factor(ndvi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "Comitan", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
+ndvi <- rbind(nl_aero,nl_ardilla,nl_balandra,nl_cajoncito,nl_centenario,nl_chametla, nl_conchalito, nl_enfermeria, nl_erendira, nl_ES, nl_merito, nl_mogote, nl_palmira, nl_pichilingue, nl_tesoro, nl_zacatal, nl_zacatecas)
+ndvi$region <- factor(ndvi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
 
 ndvi <- ndvi %>% 
         rename(
@@ -141,9 +141,9 @@ wl_chametla$date <- parse_date_time(wl_chametla$system.time_start, orders = c("m
 wl_chametla$region <- rep("Chametla", nrow(wl_chametla))
 
 
-wl_comitan <- read.csv("data/ndwi/comitan_wl.csv")
-wl_comitan$date <- parse_date_time(wl_comitan$system.time_start, orders = c("mdy"))
-wl_comitan$region <- rep("Comitan", nrow(wl_comitan))
+#wl_comitan <- read.csv("data/ndwi/comitan_wl.csv")
+#wl_comitan$date <- parse_date_time(wl_comitan$system.time_start, orders = c("mdy"))
+#wl_comitan$region <- rep("Comitan", nrow(wl_comitan))
 
 
 wl_conchalito <- read.csv("data/ndwi/conchalito_wl.csv")
@@ -200,8 +200,8 @@ wl_zacatecas <- read.csv("data/ndwi/zacatecas_wl.csv")
 wl_zacatecas$date <- parse_date_time(wl_zacatecas$system.time_start, orders = c("mdy"))
 wl_zacatecas$region <- rep("Zacatecas", nrow(wl_zacatecas))
 
-ndwi <- rbind(wl_aero,wl_ardilla,wl_balandra,wl_cajoncito,wl_centenario,wl_chametla, wl_comitan, wl_conchalito, wl_enfermeria, wl_erendira, wl_ES, wl_merito, wl_mogote, wl_palmira, wl_pichilingue, wl_tesoro, wl_zacatal, wl_zacatecas)
-ndwi$region <- factor(ndwi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "Comitan", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
+ndwi <- rbind(wl_aero,wl_ardilla,wl_balandra,wl_cajoncito,wl_centenario,wl_chametla, wl_conchalito, wl_enfermeria, wl_erendira, wl_ES, wl_merito, wl_mogote, wl_palmira, wl_pichilingue, wl_tesoro, wl_zacatal, wl_zacatecas)
+ndwi$region <- factor(ndwi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
 
 ndwi <- ndwi %>% 
         rename(
@@ -242,9 +242,9 @@ ll_chametla$date <- parse_date_time(ll_chametla$system.time_start, orders = c("m
 ll_chametla$region <- rep("Chametla", nrow(ll_chametla))
 
 
-ll_comitan <- read.csv("data/lswi/comitan_ll.csv")
-ll_comitan$date <- parse_date_time(ll_comitan$system.time_start, orders = c("mdy"))
-ll_comitan$region <- rep("Comitan", nrow(ll_comitan))
+#ll_comitan <- read.csv("data/lswi/comitan_ll.csv")
+#ll_comitan$date <- parse_date_time(ll_comitan$system.time_start, orders = c("mdy"))
+#ll_comitan$region <- rep("Comitan", nrow(ll_comitan))
 
 
 ll_conchalito <- read.csv("data/lswi/conchalito_ll.csv")
@@ -301,8 +301,8 @@ ll_zacatecas <- read.csv("data/lswi/zacatecas_ll.csv")
 ll_zacatecas$date <- parse_date_time(ll_zacatecas$system.time_start, orders = c("mdy"))
 ll_zacatecas$region <- rep("Zacatecas", nrow(ll_zacatecas))
 
-lswi <- rbind(ll_aero,ll_ardilla,ll_balandra,ll_cajoncito,ll_centenario,ll_chametla, ll_comitan, ll_conchalito, ll_enfermeria, ll_erendira, ll_ES, ll_merito, ll_mogote, ll_palmira, ll_pichilingue, ll_tesoro, ll_zacatal, ll_zacatecas)
-lswi$region <- factor(lswi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "Comitan", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
+lswi <- rbind(ll_aero,ll_ardilla,ll_balandra,ll_cajoncito,ll_centenario,ll_chametla, ll_conchalito, ll_enfermeria, ll_erendira, ll_ES, ll_merito, ll_mogote, ll_palmira, ll_pichilingue, ll_tesoro, ll_zacatal, ll_zacatecas)
+lswi$region <- factor(lswi$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
 
 lswi <- lswi %>% 
         rename(
@@ -342,9 +342,9 @@ p_chametla$date <- parse_date_time(p_chametla$system.time_start, orders = c("mdy
 p_chametla$region <- rep("Chametla", nrow(p_chametla))
 
 
-p_comitan <- read.csv("data/rain/comitan_p.csv")
-p_comitan$date <- parse_date_time(p_comitan$system.time_start, orders = c("mdy"))
-p_comitan$region <- rep("Comitan", nrow(p_comitan))
+#p_comitan <- read.csv("data/rain/comitan_p.csv")
+#p_comitan$date <- parse_date_time(p_comitan$system.time_start, orders = c("mdy"))
+#p_comitan$region <- rep("Comitan", nrow(p_comitan))
 
 
 p_conchalito <- read.csv("data/rain/conchalito_p.csv")
@@ -401,8 +401,8 @@ p_zacatecas <- read.csv("data/rain/zacatecas_p.csv")
 p_zacatecas$date <- parse_date_time(p_zacatecas$system.time_start, orders = c("mdy"))
 p_zacatecas$region <- rep("Zacatecas", nrow(p_zacatecas))
 
-rain <- rbind(p_aero,p_ardilla,p_balandra,p_cajoncito,p_centenario,p_chametla, p_comitan, p_conchalito, p_enfermeria, p_erendira, p_ES, p_merito, p_mogote, p_palmira, p_pichilingue, p_tesoro, p_zacatal, p_zacatecas)
-rain$region <- factor(rain$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "Comitan", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
+rain <- rbind(p_aero,p_ardilla,p_balandra,p_cajoncito,p_centenario,p_chametla, p_conchalito, p_enfermeria, p_erendira, p_ES, p_merito, p_mogote, p_palmira, p_pichilingue, p_tesoro, p_zacatal, p_zacatecas)
+rain$region <- factor(rain$region, levels = c("Aeropuerto-Fidepaz","La Ardilla", "Balandra", "El Cajoncito", "El Centenario", "Chametla", "El Conchalito", "Enfermeria", "Erendira", "Espiritu Santo", "El Merito", "El Mogote", "Palmira", "Unidad Pichilingue", "El Tesoro", "El Zacatal", "Zacatecas"))
 
 rain <- rain %>% 
         rename(
@@ -561,64 +561,3 @@ mangrove_avg <-  merge(ndvi_ts, ndwi_ts, by=c("region", "year", "month" )) %>%
         merge(temp_ts, na.rm=TRUE, by=c("region", "year", "month")) %>% 
         merge(coord, by=("region"))
 
-tt <- mangrove_variables %>% 
-        group_by(region) %>% 
-        summarise(ndvi=mean(ndvi, na.rm = T), 
-                  ndwi_mean=mean(ndwi, na.rm = T), 
-                  ndwi_min=min(ndwi, na.rm = T),
-                  ndwi_max=max(ndwi, na.rm = T),
-                  lswi=mean(lswi, na.rm = T), 
-                  rain=mean(rain, na.rm = T), 
-                  temp=mean(temp, na.rm = T))
-
-
-
-
-        
-env <- tt %>% 
-        ungroup() %>% 
-        select(ndvi:rain)
-
-
-
-env_st <- vegan::decostand(env, method = "standardize")
-
-pca_fit <- env %>% 
-        prcomp(scale=T) # do PCA on scaled data
-
-library(broom)  # devtools::install_github("tidymodels/broom")
-library(cowplot)
-
-
-p <- pca_fit %>%
-        augment(tt) %>% # add original dataset back in
-        ggplot(aes(.fittedPC1, .fittedPC2, color = region)) + 
-        geom_point() +
-        theme_half_open(12) + background_grid()
-
-plotly::ggplotly(p)
-
-
-
-arrow_style <- arrow(
-        angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
-)
-
-# plot rotation matrix
-pca_fit %>%
-        tidy(matrix = "rotation") %>%
-        pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") %>%
-        ggplot(aes(PC1, PC2)) +
-        geom_segment(xend = 0, yend = 0, arrow = arrow_style) +
-        geom_text(
-                aes(label = column),
-                hjust = 1, nudge_x = -0.02, 
-                color = "#904C2F"
-        ) +
-        xlim(-1.25, .5) + ylim(-.5, 1) +
-        coord_fixed() + # fix aspect ratio to 1:1
-        theme_minimal_grid(12)
-
-
-
-biplot(pca_fit)

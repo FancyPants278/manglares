@@ -394,22 +394,22 @@ dev.off()
 
 #El Comitan
 
-com_ndvi <- ndvi %>% 
-        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        filter(region == "Comitan", year < 2021) %>% 
-         group_by(year, month) %>%          summarize(ndvi=mean(ndvi)) %>%          select(month, ndvi)
+#com_ndvi <- ndvi %>% 
+        #mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+       # filter(region == "Comitan", year < 2021) %>% 
+        # group_by(year, month) %>%          summarize(ndvi=mean(ndvi)) %>%          select(month, ndvi)
 
-seq_along(time(com_ndvi$month))
+#seq_along(time(com_ndvi$month))
 
-TS <- ts(com_ndvi$ndvi, start= c(2000, 1), frequency = 12)
-acf(TS)
+#TS <- ts(com_ndvi$ndvi, start= c(2000, 1), frequency = 12)
+#acf(TS)
 
-components.ts = decompose(TS)
-plot(components.ts)
+#components.ts = decompose(TS)
+#plot(components.ts)
 
-tiff("figs/decomposition_NDVI_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
-plot(components.ts)
-dev.off()
+#tiff("figs/decomposition_NDVI_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
+#plot(components.ts)
+#dev.off()
 
 #El Conchalito
 
@@ -735,22 +735,22 @@ dev.off()
 
 #El Comitan
 
-com_ndwi <- ndwi %>% 
-        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        filter(region == "Comitan", year < 2021) %>% 
-        group_by(year, month) %>%          summarize(ndwi=mean(ndwi)) %>%          select(month, ndwi)
+#com_ndwi <- ndwi %>% 
+      #  mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+       # filter(region == "Comitan", year < 2021) %>% 
+       # group_by(year, month) %>%          summarize(ndwi=mean(ndwi)) %>%          select(month, ndwi)
 
-seq_along(time(com_ndwi$month))
+#seq_along(time(com_ndwi$month))
 
-TS <- ts(com_ndwi$ndwi, start= c(2000, 1), frequency = 12)
-acf(TS)
+#TS <- ts(com_ndwi$ndwi, start= c(2000, 1), frequency = 12)
+#acf(TS)
 
-components.ts = decompose(TS)
-plot(components.ts)
+#components.ts = decompose(TS)
+#plot(components.ts)
 
-tiff("figs/decomposition_ndwi_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
-plot(components.ts)
-dev.off()
+#tiff("figs/decomposition_ndwi_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
+#plot(components.ts)
+#dev.off()
 
 #El Conchalito
 
@@ -1074,22 +1074,22 @@ dev.off()
 
 #El Comitan
 
-com_lswi <- lswi %>% 
-        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        filter(region == "Comitan", year < 2021) %>% 
-                group_by(year, month) %>%          summarize(lswi=mean(lswi)) %>%          select(month, lswi)
+#com_lswi <- lswi %>% 
+        #mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+        #filter(region == "Comitan", year < 2021) %>% 
+               # group_by(year, month) %>%          summarize(lswi=mean(lswi)) %>%          select(month, lswi)
+#
+#seq_along(time(com_lswi$month))
 
-seq_along(time(com_lswi$month))
+#TS <- ts(com_lswi$lswi, start= c(2000, 1), frequency = 12)
+#acf(TS)
 
-TS <- ts(com_lswi$lswi, start= c(2000, 1), frequency = 12)
-acf(TS)
+#components.ts = decompose(TS)
+#plot(components.ts)
 
-components.ts = decompose(TS)
-plot(components.ts)
-
-tiff("figs/decomposition_lswi_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
-plot(components.ts)
-dev.off()
+#tiff("figs/decomposition_lswi_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
+#plot(components.ts)
+#dev.off()
 
 #El Conchalito
 
@@ -1411,22 +1411,22 @@ dev.off()
 
 #El Comitan
 
-com_rain <- rain %>% 
-        mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
-        filter(region == "Comitan", year < 2021) %>% 
-                group_by(year, month) %>%          summarize(rain=mean(rain)) %>%          select(month, rain)
+#com_rain <- rain %>% 
+      #  mutate(month = format(date, "%m"), year = format(date, "%Y")) %>% 
+       # filter(region == "Comitan", year < 2021) %>% 
+               # group_by(year, month) %>%          summarize(rain=mean(rain)) %>%          select(month, rain)
 
-seq_along(time(com_rain$month))
+#seq_along(time(com_rain$month))
 
-TS <- ts(com_rain$rain, start= c(2000, 1), frequency = 12)
-acf(TS)
+#TS <- ts(com_rain$rain, start= c(2000, 1), frequency = 12)
+#acf(TS)
 
-components.ts = decompose(na.StructTS(TS))
-plot(components.ts)
+#components.ts = decompose(na.StructTS(TS))
+#plot(components.ts)
 
-tiff("figs/decomposition_rain_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
-plot(components.ts)
-dev.off()
+#tiff("figs/decomposition_rain_Comitan.png", res = 300, height = 12, width = 16, units = "cm")
+#plot(components.ts)
+#dev.off()
 
 #El Conchalito
 
